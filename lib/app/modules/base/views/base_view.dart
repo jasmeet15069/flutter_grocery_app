@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart';
+import 'package:badges/src/badge.dart' as badge;
 import 'package:get/get.dart';
 
 import '../../../../utils/constants.dart';
@@ -70,10 +71,10 @@ class BaseView extends GetView<BaseController> {
         floatingActionButton: FloatingActionButton(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
-          onPressed:() => Get.toNamed(Routes.CART),
+          onPressed: () => Get.toNamed(Routes.CART),
           child: GetBuilder<BaseController>(
             id: 'CartBadge',
-            builder: (_) => Badge(
+            builder: (_) => badge.Badge(
               position: BadgePosition.bottomEnd(bottom: -16, end: 13),
               badgeContent: Text(
                 controller.cartItemsCount.toString(),
@@ -91,7 +92,8 @@ class BaseView extends GetView<BaseController> {
                 radius: 22.r,
                 backgroundColor: theme.primaryColor,
                 child: SvgPicture.asset(
-                  Constants.cartIcon, fit: BoxFit.none,
+                  Constants.cartIcon,
+                  fit: BoxFit.none,
                 ),
               ),
             ),
@@ -105,8 +107,8 @@ class BaseView extends GetView<BaseController> {
     return BottomNavigationBarItem(
       label: label,
       icon: SvgPicture.asset(icon, color: Get.theme.iconTheme.color),
-      activeIcon: SvgPicture.asset(icon, color: Get.theme.appBarTheme.iconTheme?.color),
+      activeIcon:
+          SvgPicture.asset(icon, color: Get.theme.appBarTheme.iconTheme?.color),
     );
   }
-
 }
